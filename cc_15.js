@@ -111,7 +111,25 @@ document.getElementById('newRiskBtn').addEventListener('click', () => {
         departmentInput.value = "";
     }
 })
+//Task 5: Implementing Bulk Updates
 
+document.getElementById('increaseRiskBtn').addEventListener('click', () => { // Increase risk levels when the "Increase Risk Level" button is clicked
+    const allRiskCards = document.querySelectorAll('.risk-card');
+    const arrRiskCards = Array.from(allRiskCards);
+    arrRiskCards.forEach((card ) => {
+        const cardRiskLevel = card.querySelector('.risk-level');
+        
+        // Upgrade risk level from Low to Medium and then Mediuim to High
+        if(cardRiskLevel.textContent.toLowerCase() == 'low'){
+            cardRiskLevel.textContent = 'Medium';
+            styleSingleCard(card);
+        }
+        else if(cardRiskLevel.textContent.toLowerCase() == 'medium'){
+            cardRiskLevel.textContent = 'High';
+            styleSingleCard(card);
+        }
+    })
+})
 
 //Task 4:  Categorizing Risks by Level
 function styleSingleCard(currentCard){ // Function to update the styling of a single risk card based on its risk level
