@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Project #15</title>
+    <style>
+        /*styling for carda*/
+        .risk-card {
+            border: 2px solid rgb(227, 99, 99);
+            margin: 5px;
+            padding: 20px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 200px;
+            min-height: 180px;
+            text-align: center;
+           
+        }
+        
+        /* Risk levels styling */
+        #riskCards{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+        header {
+            width: 100%;
+            padding: 20px;
+        }
+        header, footer {
+            text-align: center;
+            align-content: center;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+        footer p {
+            margin-bottom:20px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-bottom: 60px;
+        }
+        main {
+            padding: 20px;
+        }
+        .resolve-btn, .save-btn, input[type="text"] {
+            width: 200px;
+        }
+        .high-risk {
+            background-color: rgb(153, 0, 255);
+        }
+        .medium-risk {
+            background-color: rgb(30, 0, 255);
+        }
+        .low-risk {
+            background-color: green;
+        }
+        .risk-name{
+            color: rgba(8, 1, 23, 0.683);
+        }
+        /* Input fields and buttons styling */
+        #newRiskBtn, #increaseRiskBtn{
+            margin-top: 15px;
+            margin-left: 10px;
+            width: 200px;
+        }
+    
+        #inputDiv{
+            margin-left:10px;
+            margin-top:15px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Risk Management Dashboard</h1>
+    </header>
+    
+
+    <main>
+        <div id="riskDashboard">
+    
+            
+            <div id="inputDiv">
+                <label>Risk Name:</label>
+                <input type="text" id="riskName"/>
+                Risk Level:
+                <input type="text" id="riskLevel"/>
+                Department:
+                <input type="text" id="department"/>
+            </div>
+            <div id="riskCards"></div>
+            <div>
+                <button id="newRiskBtn">Add New Risk</button>
+                <button id="increaseRiskBtn">Increase Risk Level</button>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>FS LLC</p>
+    </footer>
+    
+    <!-- Link to the JavaScript File -->
+    <script src="cc_15.js"></script>
+
+</body>
+</html>
