@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function (){
 })
 
 
-//Task 2: Task 2: Adding Risk Items Dynamically
+//Task 2 Adding Risk Items Dynamically
 function addRiskItem(riskName, riskLevel, department) { // Ensure the user provides valid inputs before proceeding
 
 
@@ -53,12 +53,45 @@ function addRiskItem(riskName, riskLevel, department) { // Ensure the user provi
     dept.textContent = `Department: ${department}`;
     riskCard.append(dept);
 
+    //Task 4:  Categorizing Risks by Level
+
+    if (riskLevel.toLowerCase() == 'high') {// Assign a background color based on the risk level 
+        riskCard.classList.add('high-risk')
+    }
+    else if (riskLevel.toLowerCase() == 'medium') {
+        riskCard.classList.add('medium-risk')
+    }
+    else if (riskLevel.toLowerCase() == 'low') {
+        riskCard.classList.add('low-risk')
+    }
+
+//Task 3: Removing Risk Items
+    
+const resolveBtn = document.createElement('button');//Create a "Resolve" button to allow removal of the risk card
+resolveBtn.setAttribute('class', 'resolve-btn');
+resolveBtn.textContent = 'Resolve';
+riskCard.append(resolveBtn); 
+
+
+resolveBtn.addEventListener('click', (event) => {// Add an event listener to remove the risk card when the button is clicked
+    
+    riskCard.remove();
+    console.log(`Resolved risk: ${riskName}`);
+        
+    
+    event.stopPropagation();
+});
+
+divRiskDashboard.appendChild(riskCard);
+
     //Task 2 - Adding Risk Items
 document.addEventListener('DOMContentLoaded', function (){
     //Test cases for Tasks 2-5
     addRiskItem("Data Breach", "High", "IT");
     addRiskItem("Supply Chain Disruption", "Medium", "Operations");
     addRiskItem("Market Fluctuations", "High", "Finance");
+    addRiskItem("Cybersecurity Threat", "High", "IT");
+    addRiskItem("HR Compliance Issue", "Low", "Human Resources");
 })
 
 document.getElementById('newRiskBtn').addEventListener('click', () => {
@@ -79,21 +112,32 @@ document.getElementById('newRiskBtn').addEventListener('click', () => {
     }
 })
 
-//Task 3: Removing Risk Items
-    
-    const resolveBtn = document.createElement('button');//Create a "Resolve" button to allow removal of the risk card
-    resolveBtn.setAttribute('class', 'resolve-btn');
-    resolveBtn.textContent = 'Resolve';
-    riskCard.append(resolveBtn); 
 
-    
-    resolveBtn.addEventListener('click', (event) => {// Add an event listener to remove the risk card when the button is clicked
+//Task 4:  Categorizing Risks by Level
+function styleSingleCard(currentCard){ // Function to update the styling of a single risk card based on its risk level
+    const riskLevel = currentCard.querySelector('.risk-level');
         
-        riskCard.remove();
-        console.log(`Resolved risk: ${riskName}`);
-            
+    //Checks if the priority is "High" and updates the styling
+    if(riskLevel.textContent.toLowerCase() === 'high'){
+       
+        removeCurrentRiskStyle(currentCard);
         
-        event.stopPropagation();
-    });
+        currentCard.classList.add('high-risk');
+    }
+    else if(riskLevel.textContent.toLowerCase() === 'medium'){
     
-    divRiskDashboard.appendChild(riskCard);}
+        removeCurrentRiskStyle(currentCard);
+        
+        currentCard.classList.add('medium-risk');
+    }
+    else if(riskLevel.textContent.toLowerCase() === 'low'){
+        removeCurrentRiskStyle(currentCard);
+        
+        currentCard.classList.add('low-risk');
+    }
+}
+
+function removeCurrentRiskStyle(currentCard){
+    currentCard.classList.remove('high-risk', 'medium-risk', 'low-risk');
+}
+
