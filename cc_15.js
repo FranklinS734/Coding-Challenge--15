@@ -83,7 +83,15 @@ resolveBtn.addEventListener('click', (event) => {// Add an event listener to rem
 });
 
 divRiskDashboard.appendChild(riskCard);
+//Task 6: Handling Event Propagation
+    riskCard.addEventListener('click', (event) => { // Prevent clicks inside the risk card from triggering events on the dashboard
+        console.log(`Clicked on risk: ${riskName}`);
+            
+        event.stopPropagation(); // Stop the click event from bubbling up to parent elements
+    });
 
+    return riskCard;
+}
     //Task 2 - Adding Risk Items
 document.addEventListener('DOMContentLoaded', function (){
     //Test cases for Tasks 2-5
