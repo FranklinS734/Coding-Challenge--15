@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function (){
     addRiskItem("Market Fluctuations", "High", "Finance");
     addRiskItem("Cybersecurity Threat", "High", "IT");
     addRiskItem("HR Compliance Issue", "Low", "Human Resources");
+    addRiskItem("Employee Retention", "Low", "HR");
 })
 
 document.getElementById('newRiskBtn').addEventListener('click', () => {
