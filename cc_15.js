@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function (){
     //Test cases for Tasks 2-5
     addRiskItem("Data Breach", "High", "IT");
     addRiskItem("Supply Chain Disruption", "Medium", "Operations");
-   
+    addRiskItem("Market Fluctuations", "High", "Finance");
 })
 
 document.getElementById('newRiskBtn').addEventListener('click', () => {
@@ -78,4 +78,22 @@ document.getElementById('newRiskBtn').addEventListener('click', () => {
         departmentInput.value = "";
     }
 })
-}
+
+//Task 3: Removing Risk Items
+    
+    const resolveBtn = document.createElement('button');//Create a "Resolve" button to allow removal of the risk card
+    resolveBtn.setAttribute('class', 'resolve-btn');
+    resolveBtn.textContent = 'Resolve';
+    riskCard.append(resolveBtn); 
+
+    
+    resolveBtn.addEventListener('click', (event) => {// Add an event listener to remove the risk card when the button is clicked
+        
+        riskCard.remove();
+        console.log(`Resolved risk: ${riskName}`);
+            
+        
+        event.stopPropagation();
+    });
+    
+    divRiskDashboard.appendChild(riskCard);}
